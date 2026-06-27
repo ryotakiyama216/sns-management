@@ -3,12 +3,12 @@ import { useState } from "react"
 import { cn } from "@/lib/utils"
 
 interface DraftBoxProps {
-  tagClass: string
+  tagClass?: string
   tagLabel: string
   text: string
 }
 
-export function DraftBox({ tagClass, tagLabel, text }: DraftBoxProps) {
+export function DraftBox({ tagLabel, text }: DraftBoxProps) {
   const [copied, setCopied] = useState(false)
 
   const handleCopy = async () => {
@@ -18,18 +18,18 @@ export function DraftBox({ tagClass, tagLabel, text }: DraftBoxProps) {
   }
 
   return (
-    <div className="border border-[#DCD0BC] rounded-md p-3 bg-white flex flex-col gap-2">
-      <span className={cn("inline-block text-[10.5px] font-bold tracking-wide px-2.5 py-0.5 rounded-full border w-fit", tagClass)}>
+    <div className="bg-[#f8f8f8] rounded-xl p-4 flex flex-col gap-3">
+      <span className="text-[10px] font-bold text-[#aaa] tracking-widest uppercase">
         {tagLabel}
       </span>
-      <p className="text-sm whitespace-pre-wrap break-words flex-1">{text}</p>
-      <div className="flex justify-between items-center">
-        <span className="text-xs text-[#6E6557] font-mono">{text.length}字</span>
+      <p className="text-sm text-[#0a0a0a] whitespace-pre-wrap break-words leading-relaxed flex-1">{text}</p>
+      <div className="flex justify-between items-center pt-1 border-t border-[#efefef]">
+        <span className="text-[11px] text-[#bbb] font-mono">{text.length}字</span>
         <button
           onClick={handleCopy}
-          className="text-xs text-[#3B43F0] bg-[#E2E2FB] px-2.5 py-1 rounded hover:bg-[#C7CCF5] transition-colors"
+          className="text-[11px] font-semibold text-[#888] hover:text-[#0a0a0a] transition-colors"
         >
-          {copied ? "コピー済み" : "コピー"}
+          {copied ? "✓ コピー済み" : "コピー"}
         </button>
       </div>
     </div>

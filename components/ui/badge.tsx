@@ -9,12 +9,12 @@ function Badge({ className, variant = "default", ...props }: BadgeProps) {
   return (
     <div
       className={cn(
-        "inline-flex items-center gap-1 px-2.5 py-1 rounded text-xs font-medium",
+        "inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-medium",
         {
-          "bg-[#E2F5EC] text-[#1A7A4A]": variant === "ok",
-          "bg-red-100 text-red-800": variant === "error",
-          "bg-[#FAF1E8] text-[#6E6557] border border-[#DCD0BC]": variant === "idle",
-          "bg-[#E2E2FB] text-[#3B43F0]": variant === "default",
+          "bg-[#f0f0f0] text-[#0a0a0a]": variant === "ok",
+          "bg-[#f0f0f0] text-red-500": variant === "error",
+          "bg-[#f0f0f0] text-[#888]": variant === "idle",
+          "bg-[#0a0a0a] text-white": variant === "default",
         },
         className
       )}

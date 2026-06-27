@@ -5,51 +5,52 @@ import { cn } from "@/lib/utils"
 import { Settings } from "lucide-react"
 
 const navItems = [
-  { href: "/", label: "ホーム" },
-  { href: "/video", label: "📹 TikTok / IG" },
-  { href: "/text", label: "✏️ X / Threads" },
-  { href: "/note", label: "📝 note" },
+  { href: "/", label: "Home" },
+  { href: "/video", label: "TikTok / IG" },
+  { href: "/text", label: "X / Threads" },
+  { href: "/note", label: "note" },
 ]
 
 export function Header() {
   const pathname = usePathname()
 
   return (
-    <header className="max-w-3xl mx-auto px-6 border-l border-[#161616]">
-      <div className="flex items-start justify-between gap-4 py-8 pb-6 border-b border-[#161616] flex-wrap">
+    <header className="max-w-2xl mx-auto px-6 pt-12 pb-0">
+      <div className="flex items-center justify-between mb-10">
         <div>
-          <h1 className="text-3xl font-black tracking-tight">PostEngine</h1>
-          <p className="text-sm text-[#6E6557] mt-1">地方エンジニア × 育児 × 移住 — 5プラットフォーム対応</p>
+          <h1 className="text-2xl font-black tracking-tight text-[#0a0a0a]">PostEngine</h1>
+          <p className="text-xs text-[#888] mt-0.5 font-medium">地方エンジニア × 育児 × 移住</p>
         </div>
         <Link
           href="/settings"
           className={cn(
-            "flex items-center gap-1.5 text-xs font-medium px-3 py-1.5 rounded-md border transition-colors",
+            "flex items-center gap-1.5 text-xs font-medium px-3 py-1.5 rounded-full transition-colors",
             pathname === "/settings"
-              ? "bg-[#3B43F0] text-white border-[#3B43F0]"
-              : "text-[#6E6557] border-[#DCD0BC] hover:bg-[#FAF1E8]"
+              ? "bg-[#0a0a0a] text-white"
+              : "text-[#888] hover:text-[#0a0a0a] hover:bg-[#f4f4f4]"
           )}
         >
-          <Settings size={13} />
+          <Settings size={12} />
           設定
         </Link>
       </div>
-      <nav className="flex gap-0 border-b border-[#DCD0BC] mt-0">
+      <nav className="flex gap-1">
         {navItems.map((item) => (
           <Link
             key={item.href}
             href={item.href}
             className={cn(
-              "text-sm font-semibold px-4 py-3 border-b-2 transition-colors",
+              "text-xs font-semibold px-3 py-1.5 rounded-full transition-colors",
               pathname === item.href
-                ? "text-[#3B43F0] border-[#3B43F0]"
-                : "text-[#6E6557] border-transparent hover:text-[#161616]"
+                ? "bg-[#0a0a0a] text-white"
+                : "text-[#888] hover:text-[#0a0a0a] hover:bg-[#f4f4f4]"
             )}
           >
             {item.label}
           </Link>
         ))}
       </nav>
+      <div className="h-px bg-[#f0f0f0] mt-4" />
     </header>
   )
 }
