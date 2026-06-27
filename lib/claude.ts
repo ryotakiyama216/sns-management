@@ -5,7 +5,7 @@ export async function callClaude(
   useSearch = true
 ): Promise<any> {
   const body: any = {
-    model: "claude-sonnet-4-6",
+    model: "claude-sonnet-4-5",
     max_tokens: maxTokens,
     system: systemPrompt,
     messages: [{ role: "user", content: userMessage }],
