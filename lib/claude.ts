@@ -20,8 +20,12 @@ export async function callClaude(
     body: JSON.stringify(body),
   })
 
-  if (!res.ok) throw new Error("API " + res.status)
   const data = await res.json()
+
+  if (!res.ok) {
+    // エラー詳細をそのまま投げる
+    throw new Error(`API ${res.status}: ${JSON.stringify(data)}`)
+  }
 
   const txt = (data.content || [])
     .filter((b: any) => b.type === "text")
