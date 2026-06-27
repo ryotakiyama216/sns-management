@@ -1,8 +1,12 @@
 import { NextRequest, NextResponse } from "next/server"
 
-async function handler(req: NextRequest, { params }: { params: { path: string[] } }) {
-  const path = params.path.join("/")
-  const notionUrl = `https://api.notion.com/v1/${path}`
+async function handler(
+  req: NextRequest,
+  { params }: { params: Promise<{ path: string[] }> }
+) {
+  const { path } = await params
+  const notionPath = path.join("/")
+  const notionUrl = `https://api.notion.com/v1/${notionPath}`
 
   const headers: Record<string, string> = {
     "Notion-Version": "2022-06-28",
