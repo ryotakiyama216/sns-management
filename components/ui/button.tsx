@@ -12,17 +12,13 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       <button
         className={cn(
           "inline-flex items-center justify-center rounded-full font-semibold transition-all focus-visible:outline-none disabled:pointer-events-none disabled:opacity-40",
-          {
-            "bg-[#0a0a0a] text-white hover:bg-[#333]": variant === "default",
-            "bg-transparent text-[#888] hover:text-[#0a0a0a] hover:bg-[#f4f4f4]": variant === "ghost",
-            "border border-[#e0e0e0] text-[#0a0a0a] bg-transparent hover:bg-[#f4f4f4]": variant === "outline",
-            "bg-[#0a0a0a] text-white hover:bg-[#333]": variant === "green",
-          },
-          {
-            "px-4 py-2 text-sm": size === "default",
-            "px-3 py-1.5 text-xs": size === "sm",
-            "px-8 py-3.5 text-sm": size === "lg",
-          },
+          variant === "default" && "bg-[#0a0a0a] text-white hover:bg-[#333]",
+          variant === "ghost" && "bg-transparent text-[#888] hover:text-[#0a0a0a] hover:bg-[#f4f4f4]",
+          variant === "outline" && "border border-[#e0e0e0] text-[#0a0a0a] bg-transparent hover:bg-[#f4f4f4]",
+          variant === "green" && "bg-[#f0f0f0] text-[#0a0a0a] hover:bg-[#e0e0e0]",
+          size === "default" && "px-4 py-2 text-sm",
+          size === "sm" && "px-3 py-1.5 text-xs",
+          size === "lg" && "px-8 py-3.5 text-sm",
           className
         )}
         ref={ref}
